@@ -114,3 +114,5 @@ Na co będzie zwracał uwagę mentor podczas sprawdzania:
 * Wywołanie `getElementWidth("60px", "12px", "8.5px")` zwraca liczbę `101`;
 * Wywołanie `getElementWidth("200px", "0px", "0px")` zwraca liczbę `200`;
 * Wywołanie getElementWidth z dowolnymi poprawnymi argumentami zwraca poprawną wartość.
+
+https://lukasz-sklad.github.io/goit-js-hw-01/
