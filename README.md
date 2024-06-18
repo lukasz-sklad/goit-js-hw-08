@@ -1,179 +1,139 @@
-# goit-js-hw-02
-### Zadanie domowe nr 2
+# goit-js-hw-03
+### Zadanie domowe nr 3
 
-* Utwórz repozytorium `goit-js-hw-02`.
-* Utwórz oddzielny plik z rozszerzeniem `.js` dla każdego z zadań 1-4.
+* Utwórz repozytorium `goit-js-hw-03`.
+* Utwórz oddzielny plik z rozszerzeniem `.js` dla każdego z zadań 1-3.
 * Przeczytaj każde zadanie i wykonaj je w edytorze kodu.
-* Upewnij się, że kod jest sformatowany za pomocą `Prettiera`, a w konsoli nie ma błędów ani ostrzeżeń podczas otwierania strony zadania na żywo.
-* Prześlij zadanie domowe do sprawdzenia.
-
-__Format złożenia:__ Zadanie domowe zawiera dwa linki: do plików źródłowych i do strony roboczej na `GitHub Pages`.
+* Upewnij się, że kod jest sformatowany przy użyciu `Prettier` i że po otwarciu aktywnej strony zadania w konsoli nie ma żadnych błędów ani ostrzeżeń.
+* Prześlij swoje zadanie domowe do sprawdzenia
 
 
-
-__Zadanie 1. Zamówienie droidów__
-
-Stacja sprzedaży droidów naprawczych jest gotowa do uruchomienia, pozostało napisać oprogramowanie dla działu sprzedaży. Zadeklaruj funkcję `makeTransaction(quantity, pricePerDroid, customerCredits)`, która komponuje i zwraca komunikat o zakupie droidów naprawczych.
+__Format zadania domowego:__ Zadanie domowe zawiera dwa linki: do plików źródłowych i strony roboczej na `GitHub Pages`.
 
 
 
-Deklaruje ona trzy parametry, których wartości będą ustalane podczas jej wywołania:
-
-* `quantity` — ilość zamówionych droidów
-* `pricePerDroid` — cena jednego droida
-* `customerCredits` — suma środków na koncie klienta
+__Zadanie 1. Generator slug__
 
 
-Uzupełnij funkcję w następujący sposób:
 
-* Zadeklaruj zmienną do przechowywania całkowitej sumy zamówienia (łączna wartość wszystkich zamówionych droidów) i przypisz jej wyrażenie obliczające tę sumę.
-* Dodaj sprawdzenie, czy klient może zapłacić za zamówienie:
-* jeśli suma do zapłaty przekracza ilość kredytów na koncie klienta, funkcja powinna zwracać ciąg znaków `"Insufficient funds!"`
-* w przeciwnym przypadku funkcja powinna zwracać ciąg znaków `"You ordered <quantity> droids worth <totalPrice> credits!"`, gdzie `<quantity>` to ilość zamówionych droidów, a `<totalPrice>` to ich łączna wartość.
+Zanim rozwiążemy ten problem, zdefiniujmy nowy termin!
+
+Termin `slug` — to czytelny dla człowieka unikalny identyfikator używany w tworzeniu stron internetowych do tworzenia czytelnych adresów URL.
 
 
-Weź poniższy kod i wstaw go po deklaracji swojej funkcji, aby sprawdzić poprawność jej działania. W konsoli zostaną wyświetlone wyniki jej działania.
+
+Na przykład, zamiast wyświetlać użytkownikowi `mysite.com/posts/1q8fh74t`x, w pasku adresu, możesz utworzyć `slug` z tytułu artykułu. W rezultacie adres będzie przyjemniejszy w odbiorze: `mysite.com/posts/arrays-for-beginners`.
 
 
+
+`Slug` jest zawsze ciągiem małych liter, z wyrazami oddzielonymi myślnikami.
+
+Czy to jest jasne? Zatem wykonajmy zadanie!
+
+
+
+Napisz funkcję `slugify(title)`, która przyjmuje tytuł artykułu, parametr `title` i zwraca `slug` utworzony z tego ciągu.
+
+Wartością parametru `title` będą ciągi, których słowa są oddzielone tylko spacjami.
+Wszystkie znaki `slug` muszą być pisane małymi literami.
+Wszystkie słowa `slug` muszą być oddzielone myślnikami.
+
+
+Weź poniższy kod i wstaw go po deklaracji swojej funkcji, aby sprawdzić, czy działa poprawnie. Konsola wyświetli wyniki jego działania.
 ```javascript
-console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
-console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
-console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"
+console.log(slugify("Arrays for begginers")); // "arrays-for-begginers"
+console.log(slugify("English for developer")); // "english-for-developer"
+console.log(slugify("Ten secrets of JavaScript")); // "ten-secrets-of-javascript"
+console.log(slugify("How to become a JUNIOR developer in TWO WEEKS")); // "how-to-become-a-junior-developer-in-two-weeks"
 ```
 
 
-Zostaw ten kod do sprawdzenia przez mentora.
+Zostaw ten kod do sprawdzenia swojemu mentorowi.
+
+Na co będzie zwracał uwagę mentor podczas sprawdzania:
+
+* Zadeklarowano funkcję slugify(title);
+* Wywołanie `slugify ("Arrays for begginers")` zwraca `"arrays-for-begginers"`;
+* Wywołanie `slugify("English for developer")` zwraca `"english-for-developer"`;
+* Wywołanie `slugify("Ten secrets of JavaScript")` zwraca `"ten-secrets-of-javascript"`;
+* Wywołanie `slugify("How to become a JUNIOR developer in TWO WEEKS")` zwraca "h`ow-to-become-a-junior-developer-in-two-weeks"`.
+
+
+__Zadanie 2. Kompozycja tablic__
 
 
 
-__Na co będzie zwracał uwagę mentor przy sprawdzaniu:__
-
-* Zadeklarowana funkcja `makeTransaction(quantity, pricePerDroid, customerCredits)`
-* Wywołanie `makeTransaction(5, 3000, 23000)` zwraca `"You ordered 5 droids worth 15000 credits!"`
-* Wywołanie `makeTransaction(3, 1000, 15000)` zwraca `"You ordered 3 droids worth 3000 credits!"`
-* Wywołanie `makeTransaction(10, 5000, 8000)` zwraca `"Insufficient funds!"`
-* Wywołanie `makeTransaction(8, 2000, 10000)` zwraca `"Insufficient funds!"`
-* Wywołanie `makeTransaction(10, 500, 5000)` zwraca `"You ordered 10 droids worth 5000 credits!"`
+Napisz funkcję o nazwie `makeArray`, która przyjmuje trzy parametry: `firstArray` (tablica), `secondArray` (tablica) i `maxLength` (liczba). Funkcja musi utworzyć nową tablicę zawierającą wszystkie elementy z `firstArray`, a następnie wszystkie elementy z `secondArray`.
 
 
-__Zadanie 2. Formatowanie wiadomości__
 
-Zadeklaruj funkcję `formatMessage(message, maxLength)`, która przyjmuje ciąg znaków (parametr `message`) i sprawdza jego długość w stosunku do określonej maksymalnej długości (parametr `maxLength`).
-
-Uzupełnij kod funkcji w taki sposób, że:
-
-* Jeśli długość ciągu znaków jest równa lub mniejsza niż `maxLength`, funkcja zwraca początkowy ciąg znaków bez zmian.
-* Jeśli długość przekracza `maxLength`, funkcja skraca ciąg znaków do `maxLength` znaków, dodaje trzy kropki `"..."` na końcu i zwraca skróconą wersję.
+* Jeśli liczba elementów w nowej tablicy przekracza maxLength, funkcja musi zwrócić kopię tablicy o długości elementów maxLength.
+* W przeciwnym razie funkcja powinna zwrócić całą nową tablicę.
 
 
-Weź poniższy kod i wstaw go po deklaracji swojej funkcji, aby sprawdzić poprawność jej działania. W konsoli zostaną wyświetlone wyniki jej działania.
-
-
+Weź poniższy kod i wstaw go po deklaracji swojej funkcji, aby sprawdzić poprawność jej działania. Konsola wyświetli wyniki jego działania.
 ```javascript
-console.log(formatMessage("Curabitur ligula sapien", 16)); // "Curabitur ligula..."
-console.log(formatMessage("Curabitur ligula sapien", 23)); // "Curabitur ligula sapien"
-console.log(formatMessage("Vestibulum facilisis purus nec", 20)); // "Vestibulum facilisis..."
-console.log(formatMessage("Vestibulum facilisis purus nec", 30)); // "Vestibulum facilisis purus nec"
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)); // "Nunc sed turpis..."
-console.log(formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)); // "Nunc sed turpis a felis in nunc fringilla"
+console.log(makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)); // ["Mango", "Poly", "Ajax"]
+console.log(makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)); // ["Mango", "Poly", "Houston", "Ajax"]
+console.log(makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)); // ["Mango", "Ajax", "Chelsea"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)); // ["Earth", "Jupiter"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)); // ["Earth", "Jupiter", "Neptune", "Uranus"]
+console.log(makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)); // []
 ```
 
 
-Zostaw ten kod do sprawdzenia przez mentora.
+Zostaw ten kod do sprawdzenia swojemu mentorowi.
 
-__Na co będzie zwracał uwagę mentor przy sprawdzaniu:__
+Na co będzie zwracał uwagę mentor podczas sprawdzania:
 
-Zadeklarowana funkcja `formatMessage(message, maxLength)`
-Wywołanie funkcji `formatMessage("Curabitur ligula sapien", 16)` zwraca `"Curabitur ligula..."`
-Wywołanie funkcji `formatMessage("Curabitur ligula sapien", 23)` zwraca `"Curabitur ligula sapien"`
-Wywołanie funkcji `formatMessage("Vestibulum facilisis purus nec", 20)` zwraca `"Vestibulum facilisis..."`
-Wywołanie funkcji `formatMessage("Vestibulum facilisis purus nec", 30)` zwraca `"Vestibulum facilisis purus nec"`
-Wywołanie funkcji `formatMessage("Nunc sed turpis a felis in nunc fringilla", 15)` zwraca `"Nunc sed turpis..."`
-Wywołanie funkcji `formatMessage("Nunc sed turpis a felis in nunc fringilla", 41)` zwraca `"Nunc sed turpis a felis in nunc fringilla"`
-
-
-__Zadanie 3. Sprawdzanie spamu__
-
-Funkcja `checkForSpam(message)` przyjmuje ciąg znaków (parametr `message`), sprawdza go pod kątem zawartości zabronionych słów `spam` i `sale`, i zwraca wynik sprawdzenia. Słowa w ciągu znaków parametru `message` mogą być w dowolnym przypadku, na przykład SPAM lub sAlE.
-
-Uzupełnij kod funkcji tak, aby:
-
-* Jeśli zostanie znalezione zabronione słowo (`spam` lub `sale`), funkcja zwraca wartość logiczną `true`
-* Jeśli w ciągu znaków nie ma zabronionych słów, funkcja zwraca wartość logiczną `false`
-Weź poniższy kod i wstaw go po deklaracji swojej funkcji, aby sprawdzić poprawność jej działania. W konsoli zostaną wyświetlone wyniki jej działania.
+* Zadeklarowano funkcję `makeArray(firstArray, secondArray, maxLength)`;
+* Wywołanie `makeArray(["Mango", "Poly"], ["Ajax", "Chelsea"], 3)` zwraca `["Mango", "Poly", "Ajax"]`;
+* Wywołanie `makeArray(["Mango", "Poly", "Houston"], ["Ajax", "Chelsea"], 4)` zwraca `["Mango", "Poly", "Houston", "Ajax"]`;
+* Wywołanie `makeArray(["Mango"], ["Ajax", "Chelsea", "Poly", "Houston"], 3)` zwraca `["Mango", "Ajax", "Chelsea"]`;
+* Wywołanie `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 2)` zwraca `["Earth", "Jupiter"]`;
+* Wywołanie `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus"], 4)` zwraca `["Earth", "Jupiter", "Neptune", "Uranus"]`;
+* Wywołanie `makeArray(["Earth", "Jupiter"], ["Neptune", "Uranus", "Venus"], 0)` zwraca `[]`;
+* Wywołanie `makeArray()` z losowymi tablicami i losową liczbą zwraca poprawną tablicę.
 
 
-```javascript
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
-```
-
-
-Zostaw ten kod do sprawdzenia przez mentora.
-
-__Na co będzie zwracał uwagę mentor przy sprawdzaniu:__
-
-Zadeklarowana funkcja `checkForSpam(message)`.
-Wywołanie funkcji `checkForSpam("Latest technology news")` zwraca `false`
-Wywołanie funkcji `checkForSpam("JavaScript weekly newsletter")` zwraca `false`
-Wywołanie funkcji `checkForSpam("Get best sale offers now!")` zwraca `true`
-Wywołanie funkcji `checkForSpam("Amazing SalE, only tonight!")` zwraca `true`
-Wywołanie funkcji `checkForSpam("Trust me, this is not a spam message")` zwraca `true`
-Wywołanie funkcji `checkForSpam("Get rid of sPaM emails. Our book in on sale!")` zwraca `true`
-Wywołanie funkcji `checkForSpam("[SPAM] How to earn fast money?")` zwraca `true`
-
-
-__Zadanie 4. Dostawa towaru__
-
-Zadeklaruj funkcję `getShippingCost(country)`, która powinna sprawdzać możliwość dostawy towaru do kraju użytkownika (parametr `country`) i zwracać komunikat o wyniku. Obowiązkowo użyj instrukcji `switch`.
-
-Format zwracanego ciągu znaków `"Shipping to <country> will cost <price> credits"`, gdzie zamiast `<country>` i `<price>` należy podstawić odpowiednie wartości.
+__Zadanie 3. Filtrowanie tablicy liczb__
 
 
 
-Lista krajów i koszt dostawy:
-
-* `China` — 100 kredytów
-* `Chile` — 250 kredytów
-* `Australia` — 170 kredytów
-* `Jamaica` — 120 kredytów
-
-
-Z listy widać, że dostawa jest możliwa nie wszędzie. Jeśli podany kraj nie znajduje się na liście, funkcja powinna zwrócić ciąg znaków `"Sorry, there is no delivery to your country"`.
+Napisz funkcję `filterArray(numbers, value)`, która jako parametry przyjmuje tablicę liczb `(numbers)` i wartość `(value)`. Funkcja powinna zwrócić nową tablicę zawierającą tylko te liczby z tablicy `number`s, które są większe niż `value`.
 
 
 
-Weź poniższy kod i wstaw go po deklaracji swojej funkcji, aby sprawdzić poprawność jej działania. W konsoli zostaną wyświetlone wyniki jej działania.
+Wewnątrz funkcji:
+
+* Utwórz pustą tablicę, do której będziesz dodawać pasujące liczby.
+* Użyj pętli do iteracji przez każdy element tablicy `numbers`.
+* Użyj warunkowej instrukcji `if` wewnątrz pętli, aby sprawdzić każdy element i dodać go do tablicy.
+* Zwróć nową tablicę z pasującymi liczbami jako wynik.
+
+
+Weź poniższy kod i wstaw go po deklaracji funkcji, aby sprawdzić, czy działa poprawnie. Konsola wyświetli wyniki jego działania.
 
 
 ```javascript
-console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
-console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
-console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
-console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
-console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
+console.log(filterArray([1, 2, 3, 4, 5], 3)); // [4, 5]
+console.log(filterArray([1, 2, 3, 4, 5], 4)); // [5]
+console.log(filterArray([1, 2, 3, 4, 5], 5)); // []
+console.log(filterArray([12, 24, 8, 41, 76], 38)); // [41, 76]
+console.log(filterArray([12, 24, 8, 41, 76], 20)); // [24, 41, 76]
 ```
 
 
-Zostaw ten kod do sprawdzenia przez mentora.
+Zostaw ten kod do sprawdzenia swojemu mentorowi.
 
-Na co będzie zwracał uwagę mentor przy sprawdzaniu:
+Na co będzie zwracał uwagę mentor podczas sprawdzania:
 
-* Zadeklarowana funkcja `getShippingCost`(country)
-* W ciele funkcji użyta instrukcja `switch`
-* Wywołanie `getShippingCost("Australia")` zwraca `"Shipping to Australia will cost 170 credits"`
-* Wywołanie `getShippingCost("Germany")` zwraca `"Sorry, there is no delivery to your country"`
-* Wywołanie `getShippingCost("China")` zwraca `"Shipping to China will cost 100 credits"`
-* Wywołanie `getShippingCost("Chile")` zwraca `"Shipping to Chile will cost 250 credits"`
-* Wywołanie `getShippingCost("Jamaica")` zwraca `"Shipping to Jamaica will cost 120 credits"`
-* Wywołanie `getShippingCost("Sweden")` zwraca `"Sorry, there is no delivery to your country"`
+* Zadeklarowano funkcję `filterArray(numbers, value)`;
+* Wywołanie funkcji `filterArray([1, 2, 3, 4, 5], 3)` zwraca `[4, 5]`;
+* Wywołanie funkcji `filterArray([1, 2, 3, 4, 5], 4)` zwraca `[5]`;
+* Wywołanie funkcji `filterArray([1, 2, 3, 4, 5], 5)` zwraca `[]`;
+* Wywołanie funkcji `filterArray([12, 24, 8, 41, 76], 38)` zwraca `[41, 76]`;
+* Wywołanie funkcji `filterArray([12, 24, 8, 41, 76], 20)` zwraca `[24, 41, 76]`;
+* Wywołanie funkcji `filterArray()` z losową tablicą i liczbą zwraca poprawną tablicę.
 
-https://lukasz-sklad.github.io/goit-js-hw-02/
+https://lukasz-sklad.github.io/goit-js-hw-03/
