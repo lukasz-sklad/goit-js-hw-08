@@ -1,367 +1,195 @@
-# goit-js-hw-05
-### Zadanie domowe nr 5
+# goit-js-hw-06
+### Zadanie domowe nr 6
 
-_Ale szybko płynie czas, co?_
+_Jesteś prawie na półmetku JavaScript!_ 💪
 
-_Moduł 5 już prawie za nami!_ 💪
+_Po przerobieniu materiałów modułu 6, ty:_
 
-_Po przestudiowaniu materiałów z tego modułu:_
-
-* _Rozumiesz, jak działają funkcje wywołania zwrotnego i funkcje strzałkowe;_
-* _Wiesz, jak zastosować te funkcje w praktyce;_
-* _Wiesz, jak pracować z tablicą obiektów;_
-* _Znasz takie metody tablicowe jak: `forEach`, `map`, `flatMap`, `filter`, `find` і `findIndex`, `every`, `some`, `reduce`, `toSorted`;_
-* _Umiesz dostosować kolejność sortowania dla liczb i ciągów znaków;_
-* _Wiesz, jak używać metod tablicowych w łańcuchach._
-
-_A teraz przejdźmy do ćwiczeń!_
-
-_Czekają na Ciebie 4 zadania, w których musisz wykorzystać poznane metody tablicowe!_
+* _rozumiesz, co oznacza słowo kluczowe `this` w kontekście pojedynczej funkcji_
+* _potrafisz określić `this` w globalnym zakresie widoczności, w metodzie obiektu, w funkcjach strzałkowych i callback_
+* _znasz metody `call`, `apply` i `bind`_
+* _rozumiesz istotę OOP, pojęcie klasy, instancji, interfejsu_
+* _wiesz, co to jest dziedziczenie prototypowe i specyfikę jego użycia_
+* _używasz dziedziczenia prototypowego, klas do tworzenia jednolitych obiektów z tym samym zestawem właściwości, ale różnymi wartościami_
 
 
+___Co dalej?___
 
-__Zadanie domowe nr 5__
-
-* Utwórz repozytorium `goit-js-hw-05`.
-* Utwórz osobny plik z rozszerzeniem `.js` dla każdego z zadań.
-* Przeczytaj każde zadanie i wykonaj je w edytorze kodu.
-* Upewnij się, że kod jest sformatowany przy użyciu `Prettier` i że po otwarciu strony zadania na żywo w konsoli nie ma żadnych błędów ani ostrzeżeń.
-* Prześlij zadanie domowe do sprawdzenia.
-
-
-__Format zadania domowego:__ Zadanie domowe zawiera dwa linki — do plików źródłowych i strony roboczej na `GitHub Pages`.
+_Ostatni krok — wykonanie 3 zadań, gdzie trzeba prawidłowo użyć słowo kluczowe this, stworzyć klasę do zarządzania magazynem towarów i skonfigurować konstruktor ciągów. Ciekawe, prawda?_
+_Chodźmy!_
 
 
 
-__Zadanie 1: Nazwy użytkowników__
+__Zadanie domowe №6__
 
-Napisz funkcję strzałkową `getUserNames(users)`, która przyjmuje jeden parametr `users` — tablicę obiektów użytkowników. Funkcja powinna zwrócić tablicę nazw wszystkich użytkowników (właściwość `name`) z tablicy `users`.
+* Stwórz repozytorium `goit-js-hw-06`
+* Stwórz oddzielny plik z rozszerzeniem `.js` dla każdego zadania
+* Przeczytaj każde zadanie i wykonaj je w edytorze kodu
+* Upewnij się, że kod jest sformatowany za pomocą `Prettier`, a w konsoli nie ma błędów ani ostrzeżeń podczas otwierania żywej strony zadania
+* Złóż zadanie domowe do sprawdzenia
+
+
+__Format składania:__ Praca domowa zawiera dwa linki: do plików źródłowych i działającej strony na `GitHub Pages`.
 
 
 
-Weź poniższy kod i wklej go po deklaracji swojej funkcji, aby sprawdzić poprawność jej działania. W konsoli wyświetlone zostaną wyniki jej wywołań.
+__Zadanie 1. Konto użytkownika__
+
+Przed odejściem, programista popsuł kod źródłowy zarządzania kontami użytkowników naszego serwisu dostawy jedzenia. Przeprowadź refaktoryzację metod obiektu `customer`, dodając brakujące `this` przy odwołaniach do właściwości obiektu.
 
 
-```javascript
-console.log(
-  getUserNames([
-  {
-    name: "Moore Hensley",
-    email: "moorehensley@indexia.com",
-    balance: 2811
+
+Użyj tego kodu startowego i wykonaj refaktoryzację. Po deklaracji obiektu dodaliśmy wywołania metod. W konsoli zostaną wyświetlone wyniki ich pracy. Proszę, nic tam nie zmieniaj.
+
+
+```
+const customer = {
+  username: "Mango",
+  balance: 24000,
+  discount: 0.1,
+  orders: ["Burger", "Pizza", "Salad"],
+  // Change code below this line
+  getBalance() {
+    return balance;
   },
-  {
-    name: "Sharlene Bush",
-    email: "sharlenebush@tubesys.com",
-    balance: 3821
+  getDiscount() {
+    return discount;
   },
-  {
-    name: "Ross Vazquez",
-    email: "rossvazquez@xinware.com",
-    balance: 3793
+  setDiscount(value) {
+    discount = value;
   },
-  {
-    name: "Elma Head",
-    email: "elmahead@omatom.com",
-    balance: 2278
+  getOrders() {
+    return orders;
   },
-  {
-    name: "Carey Barr",
-    email: "careybarr@nurali.com",
-    balance: 3951
+  addOrder(cost, order) {
+    balance -= cost - cost * discount;
+    orders.push(order);
   },
-  {
-    name: "Blackburn Dotson",
-    email: "blackburndotson@furnigeer.com",
-    balance: 1498
-  },
-  {
-    name: "Sheree Anthony",
-    email: "shereeanthony@kog.com",
-    balance: 2764
-  },
-])
-); // ["Moore Hensley", "Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson", "Sheree Anthony"]
+  // Change code above this line
+};
+
+customer.setDiscount(0.15);
+console.log(customer.getDiscount()); // 0.15
+customer.addOrder(5000, "Steak");
+console.log(customer.getBalance()); // 19750
+console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
 ```
 
 
-
-Zostaw ten kod do sprawdzenia swojemu mentorowi.
-
-Na co będzie zwracał uwagę mentor podczas sprawdzania:
-
-* Zadeklarowano zmienną `getUserNames`;
-* Zmienna `getUserNames` przypisano funkcję strzałkową z parametrem `(users)`;
-* Do iteracji po parametrze `users` użyto metody `map()`;
-* Wywołanie funkcji z określoną tablicą użytkowników zwraca tablicę `["Moore Hensley", "Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson", "Sheree Anthony"]`;
-* Wywołanie funkcji z losowymi, ale poprawnymi argumentami zwraca poprawną wartość.
+Zostaw ten kod do sprawdzenia przez mentora.
 
 
-__Zadanie 2. Użytkownicy ze znajomym__
 
-Napisz funkcję strzałkową `getUsersWithFriend(users, friendName)`, która przyjmuje dwa parametry:
+__Na co będzie zwracać uwagę mentor przy sprawdzaniu:__
 
-* pierwszy parametr `users` — tablica obiektów użytkowników,
-* drugi parametr `friendName` — nazwa znajomych do wyszukania.
+ * Zadeklarowana zmienna `customer`
+ * Wartość zmiennej `customer` to obiekt z właściwościami i metodami
+ * Wywołanie `customer.getDiscount()` zwraca aktualną wartość właściwości `discount`
+ * Wywołanie `customer.setDiscount(0.15)` aktualizuje wartość właściwości `discount`
+ * Wywołanie `customer.getBalance()` zwraca aktualną wartość właściwości `balance`
+ * Wywołanie `customer.getOrders()` zwraca aktualną wartość właściwości `orders`
+ * Wywołanie `customer.addOrder(5000, "Steak")` dodaje `"Steak"` do tablicy wartości właściwości `orders` i aktualizuje saldo
+ * Metoda getBalance obiektu `customer` używa `this`
+ * Metoda getDiscount obiektu `customer` używa `this`
+ * Metoda setDiscount obiektu `customer` używa `this`
+ * Metoda getOrders obiektu `customer` używa `this`
+ * Metoda addOrder obiektu `customer` używa `this`
 
 
-Funkcja powinna zwrócić tablicę wszystkich użytkowników z tablicy `users`, którzy mają znajomego o nazwie `friendName`. Znajomi każdego użytkownika są przechowywani we właściwości `friends`. Jeśli nie ma użytkowników, którzy mają takiego znajomego, funkcja powinna zwrócić pustą tablicę.
+__Zadanie 2. Magazyn__
 
-Wskazówki:
-
-* Metoda `filter()` może być użyta do utworzenia nowej tablicy z elementami spełniającymi określony warunek.
-* Użyj metody `includes()`, aby sprawdzić czy tablica friends zawiera `friendName`.
+Stwórz klasę `Storage`, która będzie tworzyć obiekty do zarządzania magazynem towarów. Klasa oczekuje tylko jednego argumentu — początkowej tablicy towarów, która jest zapisywana do utworzonego obiektu w prywatnej właściwości `items`.
 
 
-Weź poniższy kod i wklej go po deklaracji swojej funkcji, aby sprawdzić, czy działa poprawnie. W konsoli wyświetlone zostaną wyniki jego działania.
+
+Ogłoś następujące metody klasy:
+
+* `getItems()` — zwraca tablicę bieżących towarów w prywatnej właściwości `items`.
+* `addItem(newItem)` — przyjmuje nowy towar `newItem` i dodaje go do tablicy towarów w prywatnej właściwości `items` obiektu.
+* `removeItem(itemToRemove)` — przyjmuje ciąg znaków z nazwą towaru `itemToRemove` i usuwa go z tablicy towarów w prywatnej właściwości `items` obiektu.
+
+
+Weź kod poniżej z inicjalizacją instancji i wywołaniami metod i wstaw go po deklaracji klasy, aby sprawdzić poprawność działania. W konsoli zostaną wyświetlone wyniki ich pracy. Proszę, nic tam nie zmieniaj.
+
 
 
 ```javascript
-const allUsers = [
-  {
-    name: "Moore Hensley",
-    friends: ["Sharron Pace"]
-  },
-  {
-    name: "Sharlene Bush",
-    friends: ["Briana Decker", "Sharron Pace"]
-  },
-  {
-    name: "Ross Vazquez",
-    friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"]
-  },
-  {
-    name: "Elma Head",
-    friends: ["Goldie Gentry", "Aisha Tran"]
-  },
-  {
-    name: "Carey Barr",
-    friends: ["Jordan Sampson", "Eddie Strong"]
-  },
-  {
-    name: "Blackburn Dotson",
-    friends: ["Jacklyn Lucas", "Linda Chapman"]
-  },
-  {
-    name: "Sheree Anthony",
-    friends: ["Goldie Gentry", "Briana Decker"]
-  }
-];
-
-console.log(getUsersWithFriend(allUsers, "Briana Decker")); 
-// [
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
-//   }
-// ]
-
-console.log(getUsersWithFriend(allUsers, "Goldie Gentry"));
-// [
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"]
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"]
-//   }
-// ]
-
-console.log(getUsersWithFriend(allUsers, "Adrian Cross" )); // []
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem("Droid");
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
 ```
 
 
-Zostaw ten kod do sprawdzenia swojemu mentorowi.
+Zostaw ten kod do sprawdzenia przez mentora.
 
-Na co będzie zwracał uwagę mentor podczas sprawdzania:
+__Na co będzie zwracać uwagę mentor przy sprawdzaniu:__
 
-* Zadeklarowano zmienną `getUsersWithFriend`;
-* Zmiennej `getUsersWithFriend` przypisano funkcję strzałkową z parametrami `(users, friendName)`;
-* Do iteracji po parametrze `users` użyto metody `filter()`;
-* Jeśli wartością parametru `friendName` jest ciąg `"Briana Decker"`, funkcja zwraca tablicę obiektów użytkowników o nazwach `Sharlene Bush` i `Sheree Anthony`;
-* Jeśli wartością parametru `friendName` jest ciąg `"Goldie Gentry"`, funkcja zwraca tablicę obiektów użytkownika o nazwach `Elma Head` i `Sheree Anthony`;
-* Jeśli wartością parametru `friendName` jest ciąg `"Adrian Cross"`, funkcja zwróci pustą tablicę;
-* Wywołanie funkcji z losowymi, ale poprawnymi argumentami zwraca poprawną wartość.
-
-
-__Zadanie 3. Sortowanie według liczby znajomych__
-
-Napisz funkcję strzałkową `sortByDescendingFriendCount(users)`, która przyjmuje jeden parametr `users` — tablicę obiektów użytkowników.
-
-
-
-Funkcja powinna zwrócić tablicę wszystkich użytkowników posortowanych według liczby znajomych w porządku malejącym (właściwość `friends`).
+* Ogłoszona klasa `Storage`
+* W klasie `Storage` ogłoszony metod `getItems`
+* W klasie `Storage` ogłoszony metod `addItem`
+* W klasie `Storage` ogłoszony metod `removeItem`
+* Właściwość `items` w klasie `Storage` ogłoszona prywatnie
+* Metoda `getItems` zwraca wartość prywatnej właściwości `items` instancji klasy, która ją wywołuje
+* Metoda `addItem` zmienia wartość prywatnej właściwości `items` instancji klasy, która ją wywołuje
+* Metoda `removeItem` zmienia wartość prywatnej właściwości `items` instancji klasy, która ją wywołuje
+* W wyniku wywołania new `Storage (["Nanitoids", "Prolonger", "Antigravitator"])` wartość zmiennej `storage` to obiekt
+* Obiekt `storage` nie zawiera publicznej właściwości `items`
+* Pierwsze wywołanie `storage.getItems()` zaraz po inicjalizacji instancji zwraca tablicę `["Nanitoids", "Prolonger", "Antigravitator"]`
+* Drugie wywołanie `storage.getItems()` po wywołaniu `storage.addItem("Droid")` zwraca tablicę `["Nanitoids", "Prolonger", "Antigravitator", "Droid"]`
+* Trzecie wywołanie `storage.getItems()` po wywołaniu `storage.removeItem("Prolonger")` zwraca tablicę `["Nanitoids", "Antigravitator", "Droid"]`
 
 
+__Zadanie 3. Konstruktor ciągów__
 
-Weź poniższy kod i wklej go po deklaracji swojej funkcji, aby sprawdzić poprawność jej działania. Wyniki jego działania zostaną wyświetlone w konsoli.
-
-```javascript
-console.log(
-  sortByDescendingFriendCount([
-    {
-      name: "Moore Hensley",
-      friends: ["Sharron Pace"],
-      gender: "male"
-    },
-    {
-      name: "Sharlene Bush",
-      friends: ["Briana Decker", "Sharron Pace"],
-      gender: "female"
-    },
-    {
-      name: "Ross Vazquez",
-      friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-      gender: "male"
-    },
-    {
-      name: "Elma Head",
-      friends: ["Goldie Gentry", "Aisha Tran"],
-      gender: "female"
-    },
-    {
-      name: "Carey Barr",
-      friends: ["Jordan Sampson", "Eddie Strong"],
-      gender: "male"
-    },
-    {
-      name: "Blackburn Dotson",
-      friends: ["Jacklyn Lucas", "Linda Chapman"],
-      gender: "male"
-    },
-    {
-      name: "Sheree Anthony",
-      friends: ["Goldie Gentry", "Briana Decker"],
-      gender: "female"
-    }
-  ])
-);
-// [
-//   {
-//     name: "Ross Vazquez",
-//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sharlene Bush",
-//     friends: ["Briana Decker", "Sharron Pace"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Elma Head",
-//     friends: ["Goldie Gentry", "Aisha Tran"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Carey Barr",
-//     friends: ["Jordan Sampson", "Eddie Strong"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Blackburn Dotson",
-//     friends: ["Jacklyn Lucas", "Linda Chapman"],
-//     gender: "male"
-//   },
-//   {
-//     name: "Sheree Anthony",
-//     friends: ["Goldie Gentry", "Briana Decker"],
-//     gender: "female"
-//   },
-//   {
-//     name: "Moore Hensley",
-//     friends: ["Sharron Pace"],
-//     gender: "male"
-//   }
-// ]
-```
-
-
-Zostaw ten kod do sprawdzenia swojemu mentorowi.
-
-Na co będzie zwracał uwagę mentor podczas sprawdzania:
-
-* Zadeklarowano zmienną `sortByDescendingFriendCount`;
-* Zmiennej `sortByDescendingFriendCount` przypisano funkcję strzałkową z parametrem `(users)`;
-* Wartość parametru `users` nie ulega zmianie;
-* Do sortowania parametru `users` używana jest metoda `toSorted()`;
-* Wywołanie funkcji z określoną tablicą `users` zwraca nową tablicę użytkowników, posortowaną malejąco według liczby ich znajomych;
-* Wywołanie funkcji z losowymi, ale poprawnymi argumentami zwraca poprawną wartość.
-
-
-__Zadanie 4. Saldo__
-
-Napisz funkcję strzałkową `getTotalBalanceByGender(users, gender)`, która przyjmuje dwa parametry:
-
-* pierwszy parametr `users` — tablica obiektów użytkowników,
-* drugi parametr `gender` — ciąg znaków przechowujący płeć.
-
-Funkcja powinna używać łańcucha wywołań metod i zwracać saldo użytkowników (właściwość `balance`), których płeć (właściwość `gender`) odpowiada wartości parametru `gender`.
+Napisz klasę `StringBuilder`, która przyjmuje jeden parametr `initialValue` — dowolny ciąg znaków, który jest zapisywany w prywatnej właściwości `value` obiektu, który jest tworzony.
 
 
 
-Weź poniższy kod i wklej go po deklaracji swojej funkcji, aby sprawdzić, czy działa poprawnie. Wyniki jego działania zostaną wyświetlone w konsoli.
+Ogłoś następujące metody klasy:
+
+* `getValue()` — zwraca aktualną wartość prywatnej właściwości `value`.
+* `padEnd(str)` — otrzymuje parametr `str` (ciąg znaków) i dodaje go na końcu wartości prywatnej właściwości `value` obiektu, który wywołuje tę metodę.
+* `padStart(str)` — otrzymuje parametr `str` (ciąg znaków) i dodaje go na początku wartości prywatnej właściwości `value` obiektu, który wywołuje tę metodę.
+* `padBoth(str)` — otrzymuje parametr `str` (ciąg znaków) i dodaje go na początku i na końcu wartości prywatnej właściwości `value` obiektu, który wywołuje tę metodę.
+
+
+Weź kod poniżej z inicjalizacją instancji i wywołaniami metod i wstaw go po deklaracji klasy, aby sprawdzić poprawność działania. W konsoli zostaną wyświetlone wyniki ich pracy. Proszę, nic tam nie zmieniaj.
 
 
 ```javascript
-const allUsers = [
-	{
-    name: "Moore Hensley",
-    gender: "male",
-    balance: 2811
-  },
-  {
-    name: "Sharlene Bush",
-    gender: "female",
-    balance: 3821
-  },
-  {
-    name: "Ross Vazquez",
-    gender: "male",
-    balance: 3793
-  },
-  {
-    name: "Elma Head",
-    gender: "female",
-    balance: 2278
-  },
-  {
-    name: "Carey Barr",
-    gender: "male",
-    balance: 3951
-  },
-  {
-    name: "Blackburn Dotson",
-    gender: "male",
-    balance: 1498
-  },
-  {
-    name: "Sheree Anthony",
-    gender: "female",
-    balance: 2764
-  }
-];
-
-console.log(getTotalBalanceByGender(allUsers, "male")); // 12053
-
-console.log(getTotalBalanceByGender(allUsers, "female")); // 8863
+const builder = new StringBuilder(".");
+console.log(builder.getValue()); // "."
+builder.padStart("^");
+console.log(builder.getValue()); // "^."
+builder.padEnd("^");
+console.log(builder.getValue()); // "^.^"
+builder.padBoth("=");
+console.log(builder.getValue()); // "=^.^="
 ```
 
 
-Zostaw ten kod do sprawdzenia swojemu mentorowi.
+Zostaw ten kod do sprawdzenia przez mentora.
 
-Na co będzie zwracał uwagę mentor podczas sprawdzania:
+__Na co będzie zwracać uwagę mentor przy sprawdzaniu:__
 
-* Zadeklarowano zmienną `getTotalBalanceByGender`;
-* Zmiennej `getTotalBalanceByGender` przypisano funkcję strzałkową z parametrami `(users, gender)`;
-* W ciele funkcji użyto łańcucha metod we właściwej kolejności;
-Wartość parametru `users` nie ulega zmianie;
-* Jeśli wartością parametru `gender` jest ciąg `"male"`, funkcja zwraca liczbę `12053`;
-* Jeśli wartością parametru `gender` jest łańcuch `female`, funkcja zwraca liczbę `8863`;
-* Wywołanie funkcji z losowymi, ale poprawnymi argumentami zwraca poprawną wartość.
+* Zadeklarowana klasa `StringBuilder`
+* Właściwość `value` w klasie `StringBuilder` zadeklarowana jako prywatna
+* W klasie `StringBuilder` zadeklarowana metoda `getValue`
+* Metoda `getValue` zwraca wartość prywatnej właściwości `value` instancji klasy, która ją wywołuje
+* W klasie `StringBuilder` zadeklarowana metoda `padEnd`
+* Metoda `padEnd` zmienia wartość prywatnej właściwości `value` instancji klasy, która ją wywołuje
+* W klasie `StringBuilder` zadeklarowana metoda `padStart`
+* Metoda `padStart` zmienia prywatną właściwość `value` instancji klasy, która ją wywołuje
+* W klasie `StringBuilder` zadeklarowana metoda `padBoth`
+* Metoda `padBoth` zmienia wartość prywatnej właściwości `value` instancji klasy, która ją wywołuje
+* W wyniku wywołania `new StringBuilder(".")` wartość prywatnej zmiennej `builder` to obiekt
+* Obiekt `builder` nie zawiera publicznej właściwości `value`
+* Pierwsze wywołanie `builder.getValue()` zaraz po inicjalizacji instancji zwraca ciąg znaków `.`
+* Drugie wywołanie `builder.getValue()` po wywołaniu `builder.padStart("^")` zwraca ciąg znaków `^.`
+* Trzecie wywołanie `builder.getValue()` po wywołaniu `builder.padEnd("^")` zwraca ciąg znaków `^.^`
+* Czwarte wywołanie `builder.getValue()` po wywołaniu `builder.padBoth("=")` zwraca ciąg znaków `=^.^=`
 
-https://lukasz-sklad.github.io/goit-js-hw-05/
+https://lukasz-sklad.github.io/goit-js-hw-06/
