@@ -177,7 +177,7 @@ __8 - Duży obraz__
 
 Wykorzystaj swój kod uzyskiwania linku do dużego obrazu, aby zmienić wartość atrybutu `src` elementu `<img>` w oknie modalnym przed otwarciem. Użyj gotowego układu okna modalnego z obrazem z przykładów biblioteki [basicLightbox](https://basiclightbox.electerious.com/).
 
-_9 - Zamknięcie za pomocą klawiatury_
+__9 - Zamknięcie za pomocą klawiatury__
 
 Dodaj funkcjonalność zamykania okna modalnego po naciśnięciu klawisza `Escape`. Upewnij się, że nasłuchiwanie klawiatury zachodzi tylko wtedy, gdy otwarte jest okno modalne. Biblioteka [basicLightbox](https://basiclightbox.electerious.com/) zawiera metodę do programowego zamykania okna modalnego.
 
