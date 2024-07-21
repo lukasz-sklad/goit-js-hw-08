@@ -1,49 +1,20 @@
 <!DOCTYPE html>
-<html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"> -->
-    <title>Zadanie domowe nr 6</title>
-    <script src="task-1.js" defer></script>
-    <script src="task-2.js" defer></script>
-    <script src="task-3.js" defer></script>
-    <script src="task-4.js" defer></script>
-</head>
-<body>
-    <h1>Zadanie domowe nr 6</h1>
-    <p id="joke"></p>
-    <script>
-        const jokes = [
-                "Dlaczego programiści nie lubią natury? Bo nie mają roota.",
-                "Co robi informatyk na plaży? Stawia serwer.",
-                "Co mówi programista, gdy jest zimno? - Brrr...",
-                "Dlaczego komputery nigdy nie chodzą na imprezy? Bo mają za dużo bajtów.",
-                "Jak programiści żegnają się z pracą? Klikają 'Wyloguj'.",
-                "Jakie jest ulubione ciasto informatyka? Ciasto z bitami.",
-                "Co robi informatyk w kuchni? Instaluje ciasteczka.",
-                "Dlaczego informatycy są złymi bokserami? Bo walczą tylko wirtualnie.",
-                "Jak się nazywa informatyk, który śpiewa? Disko.",
-                "Dlaczego programista nigdy nie wychodzi z domu? Bo ma zbyt wiele zadań na stosie.",
-                "Co mówi informatyk, gdy widzi, że coś jest źle zorganizowane? To nie jest dobra struktura danych.",
-                "Jaką grę lubią najbardziej informatycy? Ping-pong.",
-                "Co informatyk robi w autobusie? Zajmuje adresy.",
-                "Dlaczego programista zawsze myli Halloween z Bożym Narodzeniem? Bo 31 OCT = 25 DEC.",
-                "Jak świętuje informatyk swoje urodziny? Rozsyła zaproszenia przez serwer.",
-                "Jak się nazywa samotny informatyk? Lost in space.",
-                "Co robi leniwy programista? Pisze skrypty, które robią jego pracę.",
-                "Dlaczego programista zawsze nosi okulary? Aby lepiej widzieć błędy.",
-                "Co mówi informatyk, gdy ma zły dzień? 'Dzisiaj mam bugi.'",
-                "Dlaczego informatyk nigdy nie jest głodny? Bo zawsze je bajty."
-            ];
-
-        let jokeIndex = 0;
-        document.getElementById('joke').innerHTML = jokes[0];
-        setInterval(() => {
-            jokeIndex = (jokeIndex + 1) % jokes.length;
-            document.getElementById('joke').innerHTML = jokes[jokeIndex];
-        }, 5000);
-    </script>
-    <a href="README.md">README</a>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homework 7</title>
+    <link rel="stylesheet" href="./css/common.css" />
+  </head>
+  <body>
+    <ul>
+      <li><a href="./task-1.html">Task 1</a></li>
+      <li><a href="./task-2.html">Task 2</a></li>
+      <li><a href="./task-3.html">Task 3</a></li>
+      <li><a href="./task-4.html">Task 4</a></li>
+      <li><a href="./task-5.html">Task 5</a></li>
+      <li><a href="./task-6.html">Task 6</a></li>
+    </ul>
+  </body>
 </html>
