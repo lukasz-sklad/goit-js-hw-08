@@ -92,7 +92,7 @@ Na co zwróci uwagę mentor podczas sprawdzania:
 * W konsoli powinien być wyświetlony następujący komunikat:
 
 
-![Komunikat console](https://s3.eu-north-1.amazonaws.com/lms.goit.files/0361f18e-3ab9-4baf-aaf0-0c187a773fbaimage.png)
+![Komunikat console](https://filedn.eu/lPq6O1K7j8DR1n7JwTuYjYz/img/warsztaty/0361f18e-3ab9-4baf-aaf0-0c187a773fbaimage-1.png)
 
 
 __Zadanie 2__
