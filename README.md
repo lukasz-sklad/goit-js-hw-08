@@ -1,281 +1,196 @@
-# goit-js-hw-07
-### Zadanie domowe nr 7
+# goit-js-hw-08
+### Zadanie domowe nr 8
 
-_Gratulacje! Jesteś już w drugiej połowie kursu JavaScript!_ 💪
+Dwie trzecie kursu JavaScript zostało przebyte — tak trzymać! 💪
 
-_Jeśli w pierwszej połowie kursu skupialiśmy się na składni języka, teraz zaczynasz nowy etap. Czas podsumować, co zostało już zrobione w module 7._
-
-
-_Sprawdź siebie - teraz powinieneś mieć pojęcie:_
-
-* _co to jest model obiektowy dokumentu i jak buduje się hierarchię elementów DOM,_
-* _o podstawowych właściwościach i atrybutach elementów DOM,_
-* _jak manipulować drzewem DOM, tworząc i usuwając w nim elementy,_
-* _o istocie i funkcjonalności zdarzeń w przeglądarce,_
-* _o obsłudze zdarzeń za pomocą metod `addEventListener()` i `removeEventListener()`,_
-* _jak stosować zdarzenia elementów formularza.-
-
-
-_Nadszedł czas, aby praktykować te umiejętności!_
+Chwila odpoczynku, zanim przejdziemy dalej, aby przeanalizować, jakie ważne tematy zostały omówione w module 8.
 
 
 
-__Domowe zadanie nr 7__
+__Po przyswojeniu materiałów teoretycznych, wiesz już:__
 
-* Stwórz repozytorium `goit-js-hw-07`.
-* Przeczytaj każde zadanie i wykonaj je w edytorze kodu.
-* Zadania są wykonane zgodnie z instrukcjami (zmiana kodu źródłowego HTML jest zabroniona).
-* W konsoli brak błędów ani ostrzeżeń podczas otwierania strony z zadaniem.
+* jakie są etapy cyklu życia zdarzenia i rozumiesz, co to jest zdarzenie wypływające,
+* potrafisz określić, gdzie wystąpiło zdarzenie i zatrzymać jego propagację,
+* jak wykorzystywać wzorce podczas pracy z zdarzeniami (rozprzestrzenianie, delegowanie zdarzeń),
+* znasz podstawowe cechy bibliotek i potrafisz je podłączać,
+* czym jest destrukturyzacja,
+* masz pojęcie, jak używać wzorca "Obiekt parametrów",
+* potrafisz destrukturyzować obiekty i tablice.
+
+
+Nadszedł czas, aby wykorzystać tę wiedzę w praktyce!
+
+
+__Zadanie domowe nr 8__
+
+* Utwórz repozytorium `goit-js-hw-08`.
+* Zadanie wykonuj w plikach `gallery.js` i `index.html`.
+* Zapoznaj się z treścią zadania i wykonaj je w edytorze kodu.
 * Upewnij się, że kod jest sformatowany za pomocą `Prettier`, a w konsoli nie ma błędów ani ostrzeżeń podczas otwierania strony z zadaniem.
-* Prześlij zadanie do oceny.
+* Prześlij zadanie do sprawdzenia.
 
 
-__Format przekazania:__ Praca domowa zawiera dwa linki: do plików źródłowych i do strony roboczej na `GitHub Pages`.
+__Format przekazania:__ Praca domowa zawiera dwa linki: do plików źródłowych i strony roboczej na `GitHub Pages`.
 
 
-[Pobierz pliki źródłowe](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/goitacademy/javascript-homework/tree/main/v3/07/src)
-z gotową strukturą i podłączonymi plikami skryptów dla każdego zadania. Skopiuj je do swojego projektu. Zwróć uwagę, że pliki źródłowe znajdują się w folderze src. Jednak dla utworzenia działającej strony na GitHub, ważne jest, aby plik index.html był w głównym katalogu projektu, czyli bez dodatkowych zagnieżdżeń. Dlatego musisz skopiować tylko zawartość folderu src do swojego projektu, a sam folder src nie jest potrzebny.
-
-
-<pre style="color: blue;">
-! Do stylizacji znaczników w twoich zadaniach użyj tego szablonu.
+<pre>
+! Do stylizacji układu twoich zadań użyj <a href="https://www.figma.com/file/m8k9NQV7qZrtYDCvxfD68B/%D0%94%D0%97-JavaScript?type=design&amp;node-id=3-941&amp;mode=design" rel="noopener noreferrer" target="_blank">tego</a> szablonu.
 </pre>
 
 
-__Zadanie 1.__
+__Zadanie — Galeria obrazków__
 
-HTML zawiera listę kategorii `ul#categories`.
-
-```html
-<ul id="categories">
-  <li class="item">
-    <h2>Animals</h2>
-    <ul>
-      <li>Cat</li>
-      <li>Hamster</li>
-      <li>Horse</li>
-      <li>Parrot</li>
-    </ul>
-  </li>
-  <li class="item">
-    <h2>Products</h2>
-    <ul>
-      <li>Bread</li>
-      <li>Parsley</li>
-      <li>Cheese</li>
-    </ul>
-  </li>
-  <li class="item">
-    <h2>Technologies</h2>
-    <ul>
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <li>React</li>
-      <li>Node.js</li>
-    </ul>
-  </li>
-</ul>
-```
+Utwórz galerię z możliwością kliknięcia w jej elementy i przeglądania obrazu w pełnym rozmiarze w oknie modalnym. Zobacz demonstracyjne wideo działania galerii.
 
 
-Z wykorzystaniem właściwości i metod elementów DOM napisz skrypt, który:
-
-1. Policzy i wypisze w konsoli liczbę kategorii w `ul#categories`, czyli elementów `li.item`.
-2. Dla każdego elementu `li.item` na liście ul#categories znajdzie i wypisze w konsoli tekst nagłówka elementu (tagu `<h2>`) oraz liczbę elementów w kategorii (wszystkich `<li>`, które są w nim zagnieżdżone).
+Tworzenie galerii to złożone zadanie, które lepiej podzielić na kilka prostszych podzadań, wykonując każde z nich, zbliżasz się do końcowego celu. Ten proces nazywa się dekompozycją zadania.
 
 
-Na co zwróci uwagę mentor podczas sprawdzania:
+__1 - Układ galerii__
 
-* Liczba kategorii, ich nazwa i liczba elementów uzyskane za pomocą właściwości i metod elementów DOM.
-* Dane dla każdej kategorii zostały uzyskane i wypisane w konsoli w ciele pętli lub metody `forEach()`.
-* W konsoli powinien być wyświetlony następujący komunikat:
-
-
-![Komunikat console](https://filedn.eu/lPq6O1K7j8DR1n7JwTuYjYz/img/warsztaty/0361f18e-3ab9-4baf-aaf0-0c187a773fbaimage-1.png)
-
-
-__Zadanie 2__
-
-Napisz skrypt tworzący galerię obrazów na podstawie tablicy danych. HTML zawiera listę `ul.gallery`.
+Logiczne jest zacząć od stworzenia miejsca, do którego będziemy dodawać elementy galerii. W tym celu w kodzie HTML dodaj kontener galerii - nieuporządkowaną listę z klasą `gallery`.
 
 ```html
 <ul class="gallery"></ul>
 ```
 
+__2 - Tablica obrazów__
 
-Wykorzystaj tablicę obiektów `images` do utworzenia elementów `<img>`, umieszczonych wewnątrz `<li>`.
+Do stworzenia elementów galerii będziesz potrzebować danych. Dodaj ten tablicę obiektów do swojego pliku JavaScript. Każdy obiekt reprezentuje jeden element galerii.
 
-
-Możesz utworzyć i dodać elementy HTML za pomocą `document.createElement()` i `elem.append()`, lub szablonów ciągów i `elem.insertAdjacentHTML()`.
-
-
-
-* Wszystkie elementy galerii powinny być dodawane do DOM w jednej operacji dodawania.
-* Dodaj minimalne stylizowanie galerii za pomocą flexboxów za pomocą klas CSS.
+* `preview` — link do małej wersji obrazu dla karty galerii
+* `original` — link do dużej wersji obrazu dla okna modalnego
+* `description` — opis tekstowy obrazu, dla atrybutu `alt` małego obrazu i podpisu dużego obrazu w oknie modalnym.
 
 ```javascript
 const images = [
   {
-    url: "<https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260>",
-    alt: "White and Black Long Fur Cat",
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg',
+    description: 'Hokkaido Flower',
   },
   {
-    url: "<https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260>",
-    alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/14/22/05/container-4203677_1280.jpg',
+    description: 'Container Haulage Freight',
   },
   {
-    url: "<https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260>",
-    alt: "Group of Horses Running",
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/16/09/47/beach-4206785_1280.jpg',
+    description: 'Aerial Beach View',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2016/11/18/16/19/flowers-1835619_1280.jpg',
+    description: 'Flower Blooms',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2018/09/13/10/36/mountains-3674334_1280.jpg',
+    description: 'Alpine Mountains',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/16/23/04/landscape-4208571_1280.jpg',
+    description: 'Mountain Lake Sailing',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg',
+    description: 'Alpine Spring Meadows',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg',
+    description: 'Nature Landscape',
+  },
+  {
+    preview:
+      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843__340.jpg',
+    original:
+      'https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg',
+    description: 'Lighthouse Coast Sea',
   },
 ];
 ```
 
 
-Na co zwróci uwagę mentor podczas sprawdzania:
+__3 - Układ elementów galerii__
 
-* Stworzona i dodana do DOM galeria z trzema obrazami.
-* Galeria dodana do listy `ul.gallery` i składa się z 6 elementów `<li>`, w których znajdują się elementy `<img>`.
-* Do tworzenia elementów `<img>` użyto danych z tablicy obiektów `images`.
-* Wszystkie elementy galerii dodane do DOM w jednej operacji dodawania.
-* Istnieje minimalne stylizowanie galerii przy użyciu flexboxów za pomocą klas CSS.
+Masz już kontener, do którego można dodawać elementy galerii, i dane, za pomocą których je stworzyć. Teraz czas wypełnić galerię układem.
 
-
-__Zadanie 3__
-
-Napisz skrypt, który podczas wprowadzania tekstu do `inputu input#name-input` (zdarzenie `input`) podstawia jego bieżącą wartość do `span#name-output` jako imię do powitania. Upewnij się, że wartość w inpucie jest oczyszczana z białych znaków na krańcach. Jeśli input jest pusty lub zawiera tylko spacje, to zamiast imienia w spanie powinien pojawić się ciąg `"Anonymous"`.
-
+Użyj tablicy obiektów `images` i tego szablonu HTML elementu galerii, a następnie stwórz układ elementów w kodzie JavaScript, a następnie dodaj cały układ do `ul.gallery`. Nie dodawaj innych tagów HTML poza tymi, które są zawarte w tym szablonie.
 
 ```html
-<input type="text" id="name-input" placeholder="Please enter your name" />
-<h1>Hello, <span id="name-output">Anonymous</span>!</h1>
+<li class="gallery-item">
+  <a class="gallery-link" href="large-image.jpg">
+    <img
+      class="gallery-image"
+      src="small-image.jpg"
+      data-source="large-image.jpg"
+      alt="Image description"
+    />
+  </a>
+</li>
 ```
 
+* W atrybucie `src` tagu `<img>` podaj link do małej wersji obrazu.
+* Dla atrybutu `alt` użyj opisu obrazu.
+* Link do dużego obrazu powinien być przechowywany w atrybucie danych `source` na elemencie `<img>`, a adres powinien być podany w atrybucie `href`.
+* Zwróć uwagę, że obraz jest opakowany w link, którego atrybut `href` wskazuje na ścieżkę do pliku z obrazem. Kliknięcie w ten link może spowodować pobranie obrazu na komputer użytkownika. Zablokuj to zachowanie domyślnie.
+
+__4 - Style__
+
+Dodaj stylizację galerii zgodnie z projektem.
+
+__5 - Delegacja__
+
+Nadszedł czas, aby dodać funkcjonalność nasłuchiwania kliknięć na elementach galerii i uzyskiwania linku do dużego obrazu po kliknięciu. Użyj techniki delegacji na `ul.gallery`. Na razie po kliknięciu na element galerii wyświetl adres do dużego obrazu w konsoli.
+
+__6 - Podłączenie biblioteki__
+
+Biblioteka [basicLightbox](https://github.com/electerious/basicLightbox/tree/master) zapewnia w pełni funkcjonalne okno modalne, które doskonale nadaje się do naszego zadania. Użyj serwisu [CDN jsdelivr](https://www.jsdelivr.com/package/npm/basiclightbox?path=dist) i dodaj w pliku HTML linki do zminifikowanych plików JS i CSS biblioteki.
+
+__7 - Okno modalne__
+
+Rozszerz swój kod tak, aby po kliknięciu na element galerii otwierało się okno modalne podłączonej biblioteki. Aby dowiedzieć się, jak zainicjować okno modalne w swoim kodzie i jak z niego korzystać, zapoznaj się z [dokumentacją](https://github.com/electerious/basicLightbox#readme) i [przykładami](https://basiclightbox.electerious.com/).
+
+
+
+__8 - Duży obraz__
+
+Wykorzystaj swój kod uzyskiwania linku do dużego obrazu, aby zmienić wartość atrybutu `src` elementu `<img>` w oknie modalnym przed otwarciem. Użyj gotowego układu okna modalnego z obrazem z przykładów biblioteki [basicLightbox](https://basiclightbox.electerious.com/).
+
+_9 - Zamknięcie za pomocą klawiatury_
+
+Dodaj funkcjonalność zamykania okna modalnego po naciśnięciu klawisza `Escape`. Upewnij się, że nasłuchiwanie klawiatury zachodzi tylko wtedy, gdy otwarte jest okno modalne. Biblioteka [basicLightbox](https://basiclightbox.electerious.com/) zawiera metodę do programowego zamykania okna modalnego.
 
 Na co zwróci uwagę mentor podczas sprawdzania:
 
-* Element `input#name-input` nasłuchuje zdarzenie `input`.
-* Podczas wprowadzania tekstu do inputu, jego aktualna wartość jest podstawiana do `span#name-output` jako imię do powitania.
-* Wartość w inpucie jest oczyszczana z białych znaków na krańcach.
-* Jeśli input jest pusty lub zawiera tylko spacje, to zamiast imienia w spanie pojawi się ciąg `"Anonymous"`.
+* Galeria obrazów jest wyświetlana na żywo na stronie z danymi z tablicy `images`.
+* Galeria obrazów jest stylizowana zgodnie z projektem.
+* Dane dla galerii są generowane dynamicznie w JS.
+* Podczas nasłuchiwania kliknięć na elementach galerii zastosowano technikę delegacji.
+* Po kliknięciu między elementami galerii nie dzieje się nic.
+* Podłączono bibliotekę basicLightbox.
+* Po kliknięciu na element galerii otwiera się okno modalne podłączonej biblioteki, zawierające powiększoną wersję klikniętego obrazu.
+* Zaimplementowano funkcjonalność zamykania okna modalnego po naciśnięciu klawisza `Escape`.
+* Nasłuchiwanie klawiatury zachodzi tylko wtedy, gdy otwarte jest okno modalne.
 
-
-__Zadanie 4__
-
-Napisz skrypt do zarządzania formularzem logowania.
-
-```html
-<form class="login-form">
-  <label>
-    Email
-    <input type="email" name="email" />
-  </label>
-  <label>
-    Password
-    <input type="password" name="password" />
-  </label>
-  <button type="submit">Log in</button>
-</form>
-```
-
-1. Przetwarzanie wysyłania formularza `form.login-form` powinno odbywać się poprzez zdarzenie `submit`.
-2. Podczas wysyłania formularza strona nie powinna być przeładowywana.
-3. Jeśli podczas submit w formularzu są nieuzupełnione pola, wyświetl `alert` z komunikatem `'All form fields must be filled in'`. Nie dodawaj atrybutu `required` do inputów, walidacja powinna odbywać się za pomocą JS.
-4. Jeśli użytkownik wypełnił wszystkie pola i wysłał formularz, zbierz wartości pól do obiektu z dwoma właściwościami, gdzie kluczem jest nazwa inputów, a wartością są odpowiednie wartości tych inputów, oczyszczone z białych znaków na krawędziach. Do uzyskania dostępu do elementów formularza użyj właściwości `elements`.
-5. Przy submit formularza wypisz obiekt z wprowadzonymi danymi w konsoli i zresetuj wartości pól formularza za pomocą metody `reset`.
-
-
-Na co zwróci uwagę mentor podczas sprawdzania:
-
-* Nasłuchuje zdarzenia `submit`.
-* Podczas wysyłania formularza strona nie jest przeładowywana.
-* Jeśli podczas submit w formularzu są nieuzupełnione pola, wyświetla `alert`.
-* Przy submit formularza w konsoli wypisuje obiekt z dwoma właściwościami, gdzie klucze to nazwy inputów, a wartości to odpowiednie wartości tych inputów, oczyszczone z białych znaków na krawędziach.
-* Po submit formularza wartości pól są czyszczone.
-
-
-__Zadanie 5__
-
-Napisz skrypt, który po kliknięciu na button.change-color zmienia kolor tła elementu `<body>` za pomocą stylu inline i przypisuje tę wartość koloru do `span.color`.
-
-```html
-<div class="widget">
-  <p>Background color: <span class="color">-</span></p>
-  <button type="button" class="change-color">Change color</button>
-</div>
-```
-
-
-
-Aby wygenerować losowy kolor, użyj funkcji `getRandomHexColor()`.
-
-```javascript
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-```
-
-
-Zauważ, że funkcja `getRandomHexColor()` zwraca kolor w formacie heksadecymalnym (hex), podczas gdy kolor tła na `<body>` będzie w formacie rgb. To jest normalne i nie wymaga żadnych poprawek.
-
-Na co zwróci uwagę mentor podczas sprawdzania:
-
-* Tło na `<body>` jest ustawiane tylko po kliknięciu na `button.change-color`.
-* Przy każdym kliknięciu na `button.change-color` tło `<body>` jest malowane nowym losowym kolorem.
-* Na `<body>` i `span.color` wartości są tego samego koloru.
-
-
-__Zadanie 6__
-
-Napisz skrypt do tworzenia i czyszczenia kolekcji elementów z następującą funkcjonalnością.
-
-
-Istnieje `input`, do którego użytkownik wprowadza żądaną liczbę elementów. Po naciśnięciu przycisku `Create` powinna być renderowana (dodawana do DOM) kolekcja z odpowiednią liczbą elementów i czyścić się wartość w inpucie. Po ponownym naciśnięciu przycisku `Create` powinna być renderowana nowa kolekcja powyżej starej. Po naciśnięciu przycisku `Destroy` kolekcja elementów powinna być wyczyszczona.
-
-
-```html
-<div id="controls">
-  <input type="number" min="1" max="100" step="1" />
-  <button type="button" data-create>Create</button>
-  <button type="button" data-destroy>Destroy</button>
-</div>
-
-<div id="boxes"></div>
-```
-
-Po naciśnięciu przez użytkownika przycisku `Create`, wartość w `input` musi być zwalidowana i musi mieć wartość w zakresie od 1 do 100 włącznie. Tylko wtedy nowe elementy `<div>` powinny być dodawane do DOM.
-
-
-
-Aby renderować elementy na stronie, stwórz funkcję `createBoxes(amount)`, która przyjmuje jeden parametr - liczbę, która przechowuje ilość elementów do zrenderowania. Funkcja powinna tworzyć tyle elementów `<div>`, ile jest podane w parametrze `amount`, i dodawać je do DOM jako dzieci dla `div#boxes`.
-
-
-1. Rozmiary pierwszego elementu `<div>` powinny wynosić 30px na 30px.
-2. Każdy kolejny element powinien być szerszy i wyższy od poprzedniego o 10px.
-3. Wszystkie elementy powinny mieć losowy kolor tła. Użyj gotowej funkcji `getRandomHexColor()` do uzyskania losowego koloru.
-
-```javascript
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-```
-
-
-Aby wyczyścić kolekcję po naciśnięciu przycisku `Destroy`, stwórz funkcję `destroyBoxes()`, która usuwa zawartość `div#boxes`, usuwając wszystkie utworzone elementy.
-
-
-
-Na co zwróci uwagę mentor podczas sprawdzania:
-
-* Po kliknięciu przycisku `Create`, jeśli wartość w `input` znajduje się poza zakresem 1-100, nic się nie dzieje.
-* Po kliknięciu przycisku `Create`, w `div#boxes` dodawana jest taka liczba różnokolorowych kwadratów, jaką podano w `input`. Wartość w `input` jest czyszczona.
-* Po ponownym kliknięciu przycisku `Create` poprzednie kwadraty są całkowicie usuwane, a zamiast nich dodawane są nowe w ilości podanej w `input`. Wartość w `input` jest czyszczona.
-* Wszystkie kwadraty w `div#boxes` są różnokolorowe i mają tło w losowym kolorze.
-* Pierwszy kwadrat w `div#boxes` ma wymiary 30px na 30px, a każdy kolejny jest o 10px wyższy i szerszy od poprzedniego.
-* Po naciśnięciu przycisku `Destroy` wszystkie kwadraty z `div#boxes` powinny być usuwane.
-
-https://lukasz-sklad.github.io/goit-js-hw-07/
+https://lukasz-sklad.github.io/goit-js-hw-08/
