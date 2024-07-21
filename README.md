@@ -42,7 +42,7 @@ Przed odejściem, programista popsuł kod źródłowy zarządzania kontami użyt
 Użyj tego kodu startowego i wykonaj refaktoryzację. Po deklaracji obiektu dodaliśmy wywołania metod. W konsoli zostaną wyświetlone wyniki ich pracy. Proszę, nic tam nie zmieniaj.
 
 
-```
+```javascript
 const customer = {
   username: "Mango",
   balance: 24000,
