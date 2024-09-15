@@ -83,12 +83,26 @@ document.addEventListener('DOMContentLoaded', () => {
       `)
 			instance.show()
 
-			// Close modal on escape key press
-			document.onkeydown = e => {
-				if (e.key === 'Escape' && instance.visible()) {
+			// // Close modal on escape key press
+			// document.onkeydown = e => {
+			// 	if (e.key === 'Escape' && instance.visible()) {
+			// 		instance.close()
+			// 	}
+			// }
+			// Funkcja zamykająca modal na klawisz "Escape"
+			const onEscapeKeyPress = e => {
+				if (e.key === 'Escape') {
 					instance.close()
 				}
 			}
+
+			// Dodaj nasłuchiwanie na klawisz "Escape"
+			document.addEventListener('keydown', onEscapeKeyPress)
+
+			// Usuń nasłuchiwanie po zamknięciu modala
+			instance.element().addEventListener('close', () => {
+				document.removeEventListener('keydown', onEscapeKeyPress)
+			})
 		}
 	})
 })
