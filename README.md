@@ -5,8 +5,6 @@ Dwie trzecie kursu JavaScript zostało przebyte — tak trzymać! 💪
 
 Chwila odpoczynku, zanim przejdziemy dalej, aby przeanalizować, jakie ważne tematy zostały omówione w module 8.
 
-
-
 __Po przyswojeniu materiałów teoretycznych, wiesz już:__
 
 * jakie są etapy cyklu życia zdarzenia i rozumiesz, co to jest zdarzenie wypływające,
@@ -17,9 +15,7 @@ __Po przyswojeniu materiałów teoretycznych, wiesz już:__
 * masz pojęcie, jak używać wzorca "Obiekt parametrów",
 * potrafisz destrukturyzować obiekty i tablice.
 
-
 Nadszedł czas, aby wykorzystać tę wiedzę w praktyce!
-
 
 __Zadanie domowe nr 8__
 
@@ -29,9 +25,7 @@ __Zadanie domowe nr 8__
 * Upewnij się, że kod jest sformatowany za pomocą `Prettier`, a w konsoli nie ma błędów ani ostrzeżeń podczas otwierania strony z zadaniem.
 * Prześlij zadanie do sprawdzenia.
 
-
 __Format przekazania:__ Praca domowa zawiera dwa linki: do plików źródłowych i strony roboczej na `GitHub Pages`.
-
 
 <pre>
 ! Do stylizacji układu twoich zadań użyj <a href="https://www.figma.com/file/m8k9NQV7qZrtYDCvxfD68B/%D0%94%D0%97-JavaScript?type=design&amp;node-id=3-941&amp;mode=design" rel="noopener noreferrer" target="_blank">tego</a> szablonu.
@@ -42,9 +36,7 @@ __Zadanie — Galeria obrazków__
 
 Utwórz galerię z możliwością kliknięcia w jej elementy i przeglądania obrazu w pełnym rozmiarze w oknie modalnym. Zobacz demonstracyjne wideo działania galerii.
 
-
 Tworzenie galerii to złożone zadanie, które lepiej podzielić na kilka prostszych podzadań, wykonując każde z nich, zbliżasz się do końcowego celu. Ten proces nazywa się dekompozycją zadania.
-
 
 __1 - Układ galerii__
 

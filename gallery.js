@@ -45,3 +45,50 @@ const images = [
 		description: 'Lighthouse Coast Sea',
 	},
 ]
+
+document.addEventListener('DOMContentLoaded', () => {
+	const galleryContainer = document.querySelector('.gallery')
+
+	function createGalleryItem(image) {
+		const liElement = document.createElement('li')
+		liElement.className = 'gallery-item'
+
+		const anchorElement = document.createElement('a')
+		anchorElement.className = 'gallery-link'
+		anchorElement.href = image.original
+		anchorElement.onclick = event => event.preventDefault()
+
+		const imgElement = document.createElement('img')
+		imgElement.className = 'gallery-image'
+		imgElement.src = image.preview
+		imgElement.alt = image.description
+		imgElement.setAttribute('data-source', image.original)
+		imgElement.loading = 'lazy' // Dodanie atrybutu loading="lazy"
+
+		anchorElement.appendChild(imgElement)
+		liElement.appendChild(anchorElement)
+
+		return liElement
+	}
+
+	const galleryItems = images.map(createGalleryItem)
+	galleryContainer.append(...galleryItems)
+
+	galleryContainer.addEventListener('click', event => {
+		if (event.target.className === 'gallery-image') {
+			event.preventDefault()
+			const originalImage = event.target.getAttribute('data-source')
+			const instance = basicLightbox.create(`
+        <img src="${originalImage}" alt="${event.target.alt}" style="width: auto; height: auto; max-width: 100%; max-height: 100%;" />
+      `)
+			instance.show()
+
+			// Close modal on escape key press
+			document.onkeydown = e => {
+				if (e.key === 'Escape' && instance.visible()) {
+					instance.close()
+				}
+			}
+		}
+	})
+})
